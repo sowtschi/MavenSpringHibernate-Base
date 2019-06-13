@@ -1,0 +1,1 @@
+# MavenSpringHibernate-Base

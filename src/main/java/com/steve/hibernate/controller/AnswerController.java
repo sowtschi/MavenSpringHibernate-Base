@@ -18,36 +18,36 @@ import com.steve.hibernate.repository.QuestionRepository;
 @RestController
 public class AnswerController {
 
-    @Autowired
-    AnswerRepository answerRepository;
-    
-    @Autowired
-    QuestionRepository questionRepository;
+	@Autowired
+	AnswerRepository answerRepository;
 
- // Get All Notes
-    @GetMapping(value = "/answer")
-    public List<Answer> getAllAnswers() {
-        return answerRepository.findAll();
-    }
-    
- // Create a new Answer
-    @PostMapping("/answer")
-    public String createNote(@Valid @RequestBody Answer answer) {
-    	
-    	System.out.println(answer.getqId());
-    	List<Question> questions = questionRepository.findAll();
-    	
-    	for (Question question : questions) {
-    		if (question.getId()==answer.getqId()) {
-    			answer.setQuestion(question);
-    			answerRepository.save(answer);
-    			question.setAnswer(answer);
-    	    	return "Answer successfully created.";
-    		}
-    	}
-    	
-    	return "Answer could not be created.";
-    	
-    }
-    
+	@Autowired
+	QuestionRepository questionRepository;
+
+	// Get all answers
+	@GetMapping(value = "/answer")
+	public List<Answer> getAllAnswers() {
+		return answerRepository.findAll();
+	}
+
+	// Create a new answer
+	@PostMapping("/answer")
+	public String createNote(@Valid @RequestBody Answer answer) {
+
+		System.out.println(answer.getqId());
+		List<Question> questions = questionRepository.findAll();
+
+		for (Question question : questions) {
+			if (question.getqId() == answer.getqId()) {
+				answer.setQuestion(question);
+				answerRepository.save(answer);
+				question.setAnswer(answer);
+				return "Answer successfully created.";
+			}
+		}
+
+		return "Answer could not be created.";
+
+	}
+
 }

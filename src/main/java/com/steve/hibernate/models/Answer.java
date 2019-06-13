@@ -26,9 +26,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "answers")
 @EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, 
-        allowGetters = true)
+@JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true)
 public class Answer implements Serializable {
+
+	private static final long serialVersionUID = -5072656595974937182L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,24 +37,24 @@ public class Answer implements Serializable {
 
 	@NotNull
 	private String answer;
-	
+
 	@NotNull
 	@Column(insertable = false, updatable = false)
 	private Long qId;
-	
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "qId", nullable = false)
-	private Question question;
-    
-    @Column(nullable = false, updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date createdAt;
 
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date updatedAt;
+	@OneToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "qId", nullable = false)
+	private Question question;
+
+	@Column(nullable = false, updatable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	@CreatedDate
+	private Date createdAt;
+
+	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	@LastModifiedDate
+	private Date updatedAt;
 
 	public String getAnswer() {
 		return answer;
@@ -70,7 +71,7 @@ public class Answer implements Serializable {
 	public void setId(int id) {
 		this.aId = id;
 	}
-	
+
 	public Question getQuestion() {
 		return question;
 	}
