@@ -41,16 +41,6 @@ public class Answer implements Serializable {
 	@JoinColumn(name = "id_question", nullable = false)
 	private Question question;
 
-//	@Column(nullable = false, updatable = false)
-//	@Temporal(TemporalType.TIMESTAMP)
-//	@CreatedDate
-//	private Date createdAt;
-//
-//	@Column(nullable = false)
-//	@Temporal(TemporalType.TIMESTAMP)
-//	@LastModifiedDate
-//	private Date updatedAt;
-
 	public String getAnswer() {
 		return answer;
 	}

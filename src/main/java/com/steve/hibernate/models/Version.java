@@ -36,16 +36,6 @@ public class Version implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<QuestionVersionMapping> questionVersionMapping;
 
-//	@Column(nullable = false, updatable = false)
-//	@Temporal(TemporalType.TIMESTAMP)
-//	@CreatedDate
-//	private Date createdAt;
-//
-//	@Column(nullable = false)
-//	@Temporal(TemporalType.TIMESTAMP)
-//	@LastModifiedDate
-//	private Date updatedAt;
-
 	public String getVersionsTitle() {
 		return versionsTitle;
 	}

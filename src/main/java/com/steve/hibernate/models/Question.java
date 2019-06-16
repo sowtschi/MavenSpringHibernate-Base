@@ -36,16 +36,6 @@ public class Question implements Serializable {
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "question")
 	private Answer answer;
 
-//	@Column(nullable = false, updatable = false)
-//	@Temporal(TemporalType.TIMESTAMP)
-//	@CreatedDate
-//	private Date createdAt;
-//
-//	@Column(nullable = false)
-//	@Temporal(TemporalType.TIMESTAMP)
-//	@LastModifiedDate
-//	private Date updatedAt;
-
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "question")
 	private QuestionVersionMapping questionVersionMapping;
 
