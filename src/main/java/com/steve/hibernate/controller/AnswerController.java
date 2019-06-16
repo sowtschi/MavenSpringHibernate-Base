@@ -33,8 +33,6 @@ public class AnswerController {
 	// Create a new answer
 	@PostMapping("/answer")
 	public String createNote(@Valid @RequestBody Answer answer) {
-
-		System.out.println(answer.getqId());
 		List<Question> questions = questionRepository.findAll();
 
 		for (Question question : questions) {

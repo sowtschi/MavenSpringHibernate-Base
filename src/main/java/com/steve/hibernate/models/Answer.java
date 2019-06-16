@@ -1,7 +1,6 @@
 package com.steve.hibernate.models;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,12 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -39,22 +34,22 @@ public class Answer implements Serializable {
 	private String answer;
 
 	@NotNull
-	@Column(insertable = false, updatable = false)
+	@Column(name = "id_question", insertable = false, updatable = false)
 	private Long qId;
 
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "qId", nullable = false)
+	@JoinColumn(name = "id_question", nullable = false)
 	private Question question;
 
-	@Column(nullable = false, updatable = false)
-	@Temporal(TemporalType.TIMESTAMP)
-	@CreatedDate
-	private Date createdAt;
-
-	@Column(nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
-	@LastModifiedDate
-	private Date updatedAt;
+//	@Column(nullable = false, updatable = false)
+//	@Temporal(TemporalType.TIMESTAMP)
+//	@CreatedDate
+//	private Date createdAt;
+//
+//	@Column(nullable = false)
+//	@Temporal(TemporalType.TIMESTAMP)
+//	@LastModifiedDate
+//	private Date updatedAt;
 
 	public String getAnswer() {
 		return answer;

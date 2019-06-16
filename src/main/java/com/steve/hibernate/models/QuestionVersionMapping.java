@@ -2,6 +2,7 @@ package com.steve.hibernate.models;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
@@ -24,13 +25,15 @@ public class QuestionVersionMapping implements Serializable {
 	private static final long serialVersionUID = -4309199400460034677L;
 
 	@Id
+	@Column(name = "question_id")
 	private Long qId;
 
 	@NotNull
+	@Column(name = "version_id")
 	private Long vId;
 
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "qId", nullable = false)
+	@JoinColumn(name = "question_id", nullable = false)
 	private Question question;
 
 	public Long getqId() {
